@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园跑腿服务平台</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/th.jpg" alt="logo" class="logo-img">
+                <span>校园跑腿服务平台</span>
+            </div>
+            <div class="nav-links">
+                <!-- 需要登录才显示的链接 -->
+                <div class="auth-required hidden">
+                    <a href="#" id="homeLink">首页</a>
+                    <a href="#" id="publishLink">发布任务</a>
+                    <a href="#" id="personalCenterLink">个人中心</a>
+                    <a href="#" id="logoutLink">退出</a>
+                </div>
+                <!-- 未登录时显示的链接 -->
+                <div class="auth-not-required">
+                    <a href="#" id="loginLink">登录</a>
+                    <a href="#" id="registerLink">注册</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 任务列表 -->
+        <section id="taskList" class="section">
+            <h2>可接任务</h2>
+            <div class="task-container"></div>
+        </section>
+
+        <!-- 个人中心 -->
+        <section id="personalCenter" class="section hidden">
+            <h2>个人中心</h2>
+            
+            <!-- 添加个人信息显示区域 -->
+            <div class="profile-info">
+                <h3>个人信息</h3>
+                <div class="info-container">
+                    <div class="info-item">
+                        <label>用户名：</label>
+                        <span id="profileUsername"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>电话：</label>
+                        <span id="profilePhone"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>地址：</label>
+                        <span id="profileAddress"></span>
+                        <button id="editAddressBtn" class="edit-btn">修改地址</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-group">
+                <h3>我发布的任务</h3>
+                <div id="publishedTasks" class="task-container"></div>
+            </div>
+            <div class="task-group">
+                <h3>我接受的任务</h3>
+                <div id="acceptedTasks" class="task-container"></div>
+            </div>
+        </section>
+
+        <!-- 发布任务 -->
+        <section id="publishTask" class="section hidden">
+            <h2>发布新任务</h2>
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="任务标题" required>
+                <textarea id="taskDescription" placeholder="任务描述" required></textarea>
+                <input type="number" id="taskReward" placeholder="报酬(元)" required>
+                <button type="submit">发布任务</button>
+            </form>
+        </section>
+
+        <!-- 登录表单 -->
+        <section id="loginForm" class="section hidden">
+            <h2>用户登录</h2>
+            <form>
+                <input type="text" id="username" placeholder="用户名" required>
+                <input type="password" id="password" placeholder="密码" required>
+                <button type="submit">登录</button>
+            </form>
+        </section>
+
+        <!-- 注册表单 -->
+        <section id="registerForm" class="section hidden">
+            <h2>用户注册</h2>
+            <form>
+                <input type="text" id="regUsername" placeholder="用户名" required>
+                <input type="password" id="regPassword" placeholder="密码" required>
+                <input type="password" id="confirmPassword" placeholder="确认密码" required>
+                <input type="tel" id="phone" placeholder="手机号码" required>
+                <button type="submit">注册</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- 添加修改地址的模态框 -->
+    <div id="addressModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>修改地址</h3>
+            <form id="addressForm">
+                <input type="text" id="newAddress" placeholder="输入新地址" required>
+                <div class="modal-buttons">
+                    <button type="submit">保存</button>
+                    <button type="button" id="cancelAddressEdit">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/task.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
